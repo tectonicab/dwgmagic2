@@ -228,7 +228,7 @@ class GuiApplication(_RootWindow):
         help_menu.add_command(label="Open crash log", command=self._open_crash_log)
         help_menu.add_command(
             label="Project on GitHub",
-            command=lambda: webbrowser.open("https://github.com/dbaldzhiev/dwgmagic2"),
+            command=lambda: webbrowser.open("https://github.com/tectonicab/dwgmagic2"),
         )
         menubar.add_cascade(label="Help", menu=help_menu)
 
@@ -1149,7 +1149,7 @@ class GuiApplication(_RootWindow):
             self._on_close()
         else:
             webbrowser.open(
-                info.get("url", "https://github.com/dbaldzhiev/dwgmagic2/releases")
+                info.get("url", "https://github.com/tectonicab/dwgmagic2/releases")
             )
 
     # -- shutdown ----------------------------------------------------------

@@ -14,7 +14,7 @@ The pipeline (trusted-folder validation → preprocessing → script generation 
 
 ## Installation
 
-Download **`dwgmagic2-setup-vX.Y.Z.exe`** from the [latest release](https://github.com/dbaldzhiev/dwgmagic2/releases) and run it. That's the whole procedure.
+Download **`dwgmagic2-setup-vX.Y.Z.exe`** from the [latest release](https://github.com/tectonicab/dwgmagic2/releases) and run it. That's the whole procedure.
 
 The installer is fully self-contained: Python and every dependency are compiled into the bundle, and `tectonica.dll` ships inside it. **Nothing is downloaded during installation and no system Python is required** — the machine does not need Python installed at all.
 
@@ -94,7 +94,7 @@ Runtime settings are defined by the [`Settings` dataclass](dwgmagic/settings.py)
 ## Development
 
 ```bash
-git clone https://github.com/dbaldzhiev/dwgmagic2.git
+git clone https://github.com/tectonicab/dwgmagic2.git
 cd dwgmagic2
 python -m pip install -r requirements.txt
 python main.py                    # opens the GUI

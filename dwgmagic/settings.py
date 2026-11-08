@@ -128,7 +128,7 @@ def _as_number(value: object, name: str, kind: type) -> float | int:
         expected = "a whole number" if kind is int else "a number"
         raise ValueError(f"Invalid value for {name}: {value!r} (expected {expected})") from None
 
-GITHUB_REPO = "dbaldzhiev/dwgmagic2"
+GITHUB_REPO = "tectonicab/dwgmagic2"
 
 
 @dataclass(slots=True)
