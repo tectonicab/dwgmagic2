@@ -78,6 +78,21 @@ try {
         & $VenvPython -m pip install --upgrade pip --quiet
         & $VenvPython -m pip install -r requirements.txt pyinstaller pytest --quiet
         if ($LASTEXITCODE -ne 0) { throw "Dependency install failed" }
+
+        # Rebuild PyInstaller's bootloader from source (needs the MSVC build
+        # tools). The prebuilt runw.exe is shared with real malware, and
+        # Defender's ML model quarantined dwgmagic2w.exe built on it as
+        # Trojan:Win32/Bearfoos.A!ml. A locally compiled bootloader does not
+        # carry that fingerprint. --force-reinstall replaces a stock wheel
+        # already in the venv; pip caches the source-built wheel afterwards.
+        $env:PYINSTALLER_COMPILE_BOOTLOADER = "1"
+        try {
+            & $VenvPython -m pip install --no-binary pyinstaller --force-reinstall --no-deps pyinstaller --quiet
+            if ($LASTEXITCODE -ne 0) { throw "Building the PyInstaller bootloader from source failed (are the Visual Studio C++ build tools installed?)" }
+        }
+        finally {
+            Remove-Item Env:\PYINSTALLER_COMPILE_BOOTLOADER -ErrorAction SilentlyContinue
+        }
     }
 
     if (-not $SkipTests) {
